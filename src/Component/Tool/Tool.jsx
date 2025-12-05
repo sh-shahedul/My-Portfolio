@@ -8,6 +8,7 @@ import {
   SiPostman,
   SiJira,
   SiCloudflare,
+  SiFirebase,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 
@@ -20,7 +21,7 @@ const tools = [
   { name: "Figma", icon: <FaFigma size={40} /> },
   { name: "Postman", icon: <SiPostman size={40} /> },
   { name: "VS Code", icon: <VscVscode size={40} /> },
-  { name: "Jira", icon: <SiJira size={40} /> },
+  { name: "Firebase", icon: <SiFirebase size={40} /> },
   { name: "Cloudflare", icon: <SiCloudflare size={40} /> },
 ];
 

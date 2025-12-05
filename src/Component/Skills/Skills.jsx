@@ -4,23 +4,22 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaJs,
-  FaPython,
   FaReact,
   FaNodeJs,
 } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiNextdotjs, SiFirebase } from "react-icons/si";
+import { SiMongodb, SiExpress, SiNextdotjs,SiTailwindcss } from "react-icons/si";
 
 const skills = [
   { name: "HTML5", icon: <FaHtml5 size={40} /> },
   { name: "CSS3", icon: <FaCss3Alt size={40} /> },
+  { name: "TailwindCSS", icon: <SiTailwindcss size={40} />},
   { name: "JavaScript", icon: <FaJs size={40} /> },
-  { name: "Python", icon: <FaPython size={40} /> },
   { name: "React", icon: <FaReact size={40} /> },
   { name: "Node.js", icon: <FaNodeJs size={40} /> },
   { name: "MongoDB", icon: <SiMongodb size={40} /> },
   { name: "Express.js", icon: <SiExpress size={40} /> },
   { name: "Next.js", icon: <SiNextdotjs size={40} /> },
-  { name: "Firebase", icon: <SiFirebase size={40} /> },
+ 
 ];
 
 const Skills = () => {
