@@ -1,9 +1,51 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const NavBar = () => {
+  const [active, setActive] = useState("about"); // Default active section
+
+  // Define all routes
+  const links = [
+    { name: "Home", href: "#home" },
+    { name: "Service", href: "#service" },
+    { name: "Education", href: "#education" },
+    { name: "Skills", href: "#skills" },
+    { name: "Project", href: "#project" },
+  ];
+
+  // Scroll spy: detect which section is in view
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + window.innerHeight / 2;
+
+      links.forEach((link) => {
+        const section = document.querySelector(link.href);
+        if (section) {
+          const top = section.offsetTop;
+          const bottom = top + section.offsetHeight;
+          if (scrollPos >= top && scrollPos < bottom) {
+            setActive(link.href.replace("#", ""));
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [links]);
+
+  // Smooth scroll on click
+  const handleClick = (e, href) => {
+    e.preventDefault();
+    const section = document.querySelector(href);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setActive(href.replace("#", ""));
+    }
+  };
+
   return (
-    <div className="w-full bg-[#05080E] font-inter shadow-md shadow-cyan-500/10">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-transparent backdrop-blur-md sticky top-0 z-50 font-inter shadow-md shadow-cyan-500/10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between py-4">
 
           {/* Left Side (Logo) */}
@@ -22,23 +64,22 @@ const NavBar = () => {
                 strokeWidth="15"
               />
             </svg>
-            <span className="text-2xl text-white font-semibold">Wilkerson</span>
+            <span className="text-2xl text-white font-semibold">Shahedul <span className="text-cyan-400">Hoque</span></span>
           </div>
 
           {/* Middle Menu */}
           <div className="hidden lg:flex">
-            <ul className="flex space-x-6">
-              {[
-                { name: "About", href: "#about" },
-                { name: "Service", href: "#service" },
-                { name: "Skills", href: "#skills" },
-                { name: "Education", href: "#education" },
-                { name: "Contact me", href: "#contact" },
-              ].map((item, idx) => (
+            <ul className="flex space-x-6 font-bold">
+              {links.map((item, idx) => (
                 <li key={idx}>
                   <a
                     href={item.href}
-                    className="text-gray-300 hover:text-cyan-400 transition-colors"
+                    onClick={(e) => handleClick(e, item.href)}
+                    className={`transition-colors duration-300 ${
+                      active === item.href.replace("#", "")
+                        ? "text-cyan-400"
+                        : "text-gray-300 hover:text-cyan-400"
+                    }`}
                   >
                     {item.name}
                   </a>
@@ -51,6 +92,7 @@ const NavBar = () => {
           <div>
             <a
               href="#contact"
+              onClick={(e) => handleClick(e, "#contact")}
               className="
                 px-8 py-2 rounded-full bg-cyan-400 text-[#05080E] font-semibold shadow-lg shadow-cyan-400/30
                 hover:bg-cyan-300 hover:shadow-cyan-400/50 transition-all
