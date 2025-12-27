@@ -8,6 +8,7 @@ import Project from '../Component/Project/Project';
 import Contact from '../Component/Contact/Contact';
 import Footer from '../Component/Footer/Footer';
 import Tool from '../Component/Tool/Tool';
+import AboutMe from '../Component/About/AboutMe';
 
 
 
@@ -16,6 +17,7 @@ const Home = () => {
         <div className='bg-[#05080E]'>
             <NavBar></NavBar>
             <Hero></Hero>
+            <AboutMe></AboutMe>
             <Service></Service>
             <Education></Education>
             <Skills></Skills>
