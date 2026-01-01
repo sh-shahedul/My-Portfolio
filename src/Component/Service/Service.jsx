@@ -72,6 +72,20 @@ const FloatingParticles = () => {
 };
 
 const Service = () => {
+  // Smart Email Handler (PC এবং Mobile উভয়ের জন্য)
+  const handleEmailClick = () => {
+    const email = "shahedulhoque2003@gmail.com";
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      // Mobile এর জন্য - ডিফল্ট ইমেল অ্যাপ
+      window.location.href = `mailto:${email}`;
+    } else {
+      // PC এর জন্য - Gmail ওয়েব ভার্সন
+      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`, "_blank");
+    }
+  };
+
   return (
     <section 
       id="service" 
@@ -253,20 +267,7 @@ const Service = () => {
                 />
 
                 {/* Corner Decorations */}
-                <motion.div
-                  className="absolute top-0 right-0 w-16 h-16 opacity-10"
-                  style={{
-                    background: `linear-gradient(135deg, transparent 50%, currentColor 50%)`,
-                  }}
-                  animate={{
-                    opacity: [0.1, 0.3, 0.1],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    delay: index * 0.2,
-                  }}
-                />
+              
               </motion.div>
 
               {/* Card Number Badge */}
@@ -291,9 +292,9 @@ const Service = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.8 }}
         >
-          <motion.a 
-            href="#contact"
-            className="group relative inline-flex items-center gap-2 px-10 py-5 rounded-full overflow-hidden font-bold text-lg"
+          <motion.button
+            onClick={handleEmailClick}
+            className="group relative inline-flex items-center gap-2 px-10 py-5 rounded-full overflow-hidden font-bold text-lg cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -342,7 +343,7 @@ const Service = () => {
                 repeatDelay: 1,
               }}
             />
-          </motion.a>
+          </motion.button>
         </motion.div>
 
       </div>
