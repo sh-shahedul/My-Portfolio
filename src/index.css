@@ -12,3 +12,25 @@ body {
 body {
   position: relative;
 }
+
+/* Global Smooth Scroll (index.css বা App.css তে add করুন) */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hardware acceleration for better performance */
+section {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
