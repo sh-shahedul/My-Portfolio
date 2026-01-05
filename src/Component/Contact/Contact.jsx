@@ -140,7 +140,7 @@ const Contact = () => {
             Get In <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">Touch</span>
           </h2>
           <p className="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto">
-            আমার সাথে যোগাযোগ করতে নিচের যেকোনো মাধ্যম ব্যবহার করুন
+           Feel free to contact me using any of the methods below.
           </p>
         </div>
 
